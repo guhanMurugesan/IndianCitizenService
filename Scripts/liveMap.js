@@ -24,6 +24,7 @@ function initialize() {
         mapTypeId: google.maps.MapTypeId.TERRAIN
     });
     lookUpMapCollection(map, directionsService);
+     google.maps.event.addListenerOnce(map, 'idle', AppDefaultZoom);
 }
 
 function lookUpMapCollection(map, directionsService)
@@ -46,4 +47,8 @@ function calculateAndDisplayRoute(map,directionsService, directionsDisplay, orig
             window.alert('Directions request failed due to ' + status);
         }
     });
+}
+function AppDefaultZoom()
+{
+    map.setZoom(17);
 }
